@@ -1,58 +1,43 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://github.com/Phigold-Semesta/jitu-spk/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Tentang JITU (Jenis Ikan Ternak Unggulan)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**JITU** adalah aplikasi web Sistem Pendukung Keputusan (SPK) berbasis **Laravel 13** yang dirancang khusus untuk studi kasus pada usaha budidaya ikan air tawar **Persada Mandiri Farm**[cite: 7]. Aplikasi ini menerapkan metode matematis **Simple Additive Weighting (SAW)** untuk membantu pemilik usaha dalam menentukan prioritas pengembangan komoditas ikan secara objektif, terstruktur, dan berbasis data nyata[cite: 7].
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Alih-alih mengandalkan intuisi atau perkiraan semata[cite: 7], JITU mengevaluasi berbagai alternatif komoditas utama—seperti Ikan Gabus, Ikan Mujair, dan Ikan Patin[cite: 7]—berdasarkan lima parameter kriteria utama:
+1. **Harga Jual per Kg** (*Benefit*)[cite: 7]
+2. **Keuntungan Bersih per Siklus Panen** (*Benefit*)[cite: 7]
+3. **Tingkat Permintaan Pasar** (*Benefit*)[cite: 7]
+4. **Biaya Pakan dan Perawatan per Siklus** (*Cost*)[cite: 7]
+5. **Tingkat Kematian / Risiko** (*Cost*)[cite: 7]
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Hak Akses Pengguna (Roles)
 
-## Learning Laravel
+Aplikasi JITU membagi fungsionalitas ke dalam dua peran utama untuk menjaga integritas data dan proses bisnis:
+* **Admin (Pemilik Usaha):** Memiliki hak akses penuh untuk mengelola data master kriteria, bobot, jenis kriteria (*benefit/cost*), data alternatif ikan, manajemen akun pegawai, hingga mengeksekusi perhitungan dan mencetak laporan keputusan resmi[cite: 7].
+* **Pegawai (Petugas Lapangan):** Berperan sebagai operator yang menginput data primer operasional harian atau berkala langsung dari kolam ke dalam sistem[cite: 7].
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Fitur Utama
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [x] Manajemen Autentikasi Pengguna (Admin & Pegawai)
+- [x] Pengelolaan Data Kriteria dan Bobot Nilai secara Dinamis
+- [x] Pengelolaan Data Alternatif Komoditas Ikan Tawar[cite: 7]
+- [x] Input Penilaian Matriks Keputusan Berbasis Data Lapangan[cite: 7]
+- [x] Mesin Perhitungan Otomatis Metode *Simple Additive Weighting* (SAW)[cite: 7]
+- [x] Cetak Laporan Hasil Keputusan / Perangkingan Berbasis PDF[cite: 7]
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Memulai Pengembangan (Getting Started)
 
-## Agentic Development
+Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Clone Repositori**
+   ```bash
+   git clone [https://github.com/Phigold-Semesta/jitu-spk.git](https://github.com/Phigold-Semesta/jitu-spk.git)
+   cd jitu-spk
