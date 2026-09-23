@@ -6,52 +6,103 @@
 <!-- Banner Instruksi Kerja -->
 <div class="bg-blue-900 rounded-3xl p-8 text-white mb-8 relative overflow-hidden shadow-lg border border-blue-800">
     <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-800 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
-    <div class="relative z-10">
-        <h2 class="text-2xl font-bold mb-2 tracking-tight">Selamat Bertugas, {{ Session::get('nama_lengkap') }}! 🧑‍🌾</h2>
-        <p class="text-blue-200 text-sm max-w-2xl leading-relaxed font-medium">
-            Melalui dashboard ini, tugas Anda adalah memastikan dan memasukkan data penilaian riil dari lapangan berdasarkan kriteria kualitas dan operasional ikan ternak di Persada Mandiri Farm.
-        </p>
+    <div class="relative z-10 flex flex-col md:flex-row justify-between items-center">
+        <div>
+            <h2 class="text-2xl font-bold mb-2 tracking-tight">Selamat Bertugas, {{ Session::get('nama_lengkap') ?? 'Petugas' }}! 🧑‍🌾</h2>
+            <p class="text-blue-200 text-sm max-w-2xl leading-relaxed font-medium">
+                Melalui dashboard ini, tugas Anda adalah memastikan dan memasukkan data penilaian riil dari lapangan berdasarkan 5 kriteria kualitas untuk masing-masing komoditas ikan ternak.
+            </p>
+        </div>
+        <div class="mt-6 md:mt-0">
+             <a href="{{ route('pegawai.penilaian.index') }}" class="inline-block bg-white text-blue-700 hover:bg-sky-50 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition duration-200">
+                Input Matriks Sekarang &rarr;
+            </a>
+        </div>
     </div>
 </div>
 
-<!-- Alur Kerja / Panduan -->
-<div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-8">
-    <div class="mb-6">
-        <h3 class="text-lg font-bold text-slate-800 tracking-tight">Alur Kerja Pengisian SPK</h3>
-        <p class="text-xs text-slate-500 mt-1">Ikuti 3 langkah sederhana di bawah ini untuk mengelola data penilaian.</p>
+<!-- Layout Visualisasi & Alur Kerja Pegawai -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+    
+    <!-- Alur Kerja -->
+    <div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-6 lg:col-span-2">
+        <h3 class="text-lg font-bold text-slate-800 tracking-tight mb-6">Alur Pengumpulan Data Lapangan</h3>
+        
+        <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold flex-shrink-0">1</div>
+                <div>
+                    <h4 class="text-sm font-bold text-slate-800">Observasi Kualitas Air & Pertumbuhan</h4>
+                    <p class="text-xs text-slate-500 mt-1">Lakukan pengecekan kondisi bibit dan catat persentase tingkat kematian ikan di kolam secara berkala.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center font-bold flex-shrink-0">2</div>
+                <div>
+                    <h4 class="text-sm font-bold text-slate-800">Analisa Biaya & Harga Pasar</h4>
+                    <p class="text-xs text-slate-500 mt-1">Cek pengeluaran biaya pakan (cost) dan bandingkan dengan harga jual serta keuntungan bersih (benefit).</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold flex-shrink-0">3</div>
+                <div>
+                    <h4 class="text-sm font-bold text-slate-800">Validasi Data ke Sistem SPK</h4>
+                    <p class="text-xs text-slate-500 mt-1">Masukkan data dalam bentuk matriks angka pasti agar sistem dapat mengkalkulasi komoditas unggulan.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-        <!-- Garis Penghubung (Hanya muncul di Desktop) -->
-        <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -z-10 -translate-y-1/2"></div>
-
-        <!-- Langkah 1 -->
-        <div class="bg-white px-4 text-center">
-            <div class="w-12 h-12 mx-auto rounded-full bg-blue-50 border-4 border-white text-blue-600 flex items-center justify-center font-bold text-lg mb-4 shadow-sm shadow-blue-100">1</div>
-            <h4 class="text-sm font-bold text-slate-800 mb-2">Observasi Lapangan</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">Cek kondisi kualitas bibit, harga pasar, serta tingkat kematian dari masing-masing komoditas ikan.</p>
+    <!-- Visualisasi Radar Chart: Intensitas Kriteria Lapangan -->
+    <div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-6">
+        <div class="mb-4">
+            <h3 class="text-lg font-bold text-slate-800 tracking-tight">Fokus Pengawasan Lapangan</h3>
+            <p class="text-xs text-slate-500">Sebaran intensitas kriteria yang paling dipantau di kolam.</p>
         </div>
-
-        <!-- Langkah 2 -->
-        <div class="bg-white px-4 text-center">
-            <div class="w-12 h-12 mx-auto rounded-full bg-sky-50 border-4 border-white text-sky-600 flex items-center justify-center font-bold text-lg mb-4 shadow-sm shadow-sky-100">2</div>
-            <h4 class="text-sm font-bold text-slate-800 mb-2">Input Matriks Penilaian</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">Masuk ke menu <b class="text-slate-700">Input Penilaian</b> dan masukkan angka riil sesuai data observasi untuk setiap kriteria.</p>
+        <div class="relative h-64 w-full flex items-center justify-center">
+            <canvas id="radarChartPegawai"></canvas>
         </div>
-
-        <!-- Langkah 3 -->
-        <div class="bg-white px-4 text-center">
-            <div class="w-12 h-12 mx-auto rounded-full bg-indigo-50 border-4 border-white text-indigo-600 flex items-center justify-center font-bold text-lg mb-4 shadow-sm shadow-indigo-100">3</div>
-            <h4 class="text-sm font-bold text-slate-800 mb-2">Pantau Hasil SPK</h4>
-            <p class="text-xs text-slate-500 leading-relaxed">Sistem akan secara otomatis melakukan normalisasi SAW dan menampilkan komoditas ikan terbaik.</p>
-        </div>
-    </div>
-
-    <!-- Tombol Aksi Cepat -->
-    <div class="mt-10 text-center">
-        <a href="{{ route('pegawai.penilaian.index') }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-600/30 transition duration-200">
-            Mulai Input Penilaian Sekarang &rarr;
-        </a>
     </div>
 </div>
+
+<!-- Pustaka Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+        Chart.defaults.color = '#64748b';
+
+        // Data Radar Chart (Fokus Pengawasan Pegawai)
+        const ctxRadar = document.getElementById('radarChartPegawai').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Perawatan', 'Tingkat Kematian', 'Kualitas Bibit', 'Pakan', 'Permintaan'],
+                datasets: [{
+                    label: 'Intensitas Harian (%)',
+                    data: [80, 95, 70, 85, 60],
+                    backgroundColor: 'rgba(56, 189, 248, 0.2)', // Sky blue transparan
+                    borderColor: '#0284c7', // Sky 600
+                    pointBackgroundColor: '#0284c7',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#e2e8f0' },
+                        grid: { color: '#e2e8f0' },
+                        pointLabels: { font: { size: 10 } },
+                        ticks: { display: false } // Sembunyikan angka di tengah jaring
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    });
+</script>
 @endsection
